@@ -1,2 +1,2 @@
-# demos
+# Demos
 Demos of Languages &amp; Frameworks
