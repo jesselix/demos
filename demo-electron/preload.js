@@ -5,6 +5,19 @@
  *
  * https://www.electronjs.org/docs/latest/tutorial/sandbox
  */
+
+const fs = require("fs")
+
+// 渲染线程中使用node.js的第一种方法：通过preload加载js
+fs.readFile("test.txt", (err, data) => {
+  if (err) {
+    console(err)
+    return
+  }
+
+  console.log(data.toString())
+})
+
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)
@@ -15,3 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${type}-version`, process.versions[type])
   }
 })
+
+
+

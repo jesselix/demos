@@ -2,20 +2,39 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
-function createWindow () {
+// require('./ipcMain/menu');
+
+const fs = require("fs")
+
+
+
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
+      webSecurity: false,
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      contextIsolation: false,  // <== important
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
+
+
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
-  require('./ipcMain/menu');
+  fs.readFile("test.txt", (err, data) => {
+    if (err) {
+      console(err)
+      return
+    }
+
+    console.log(data.toString())
+  })
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
