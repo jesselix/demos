@@ -7,7 +7,8 @@ const path = require('path')
 const fs = require("fs")
 
 
-
+// 创建一个窗口
+// 窗口加载一个界面。该界面使用web技术，运行在渲染进程中
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
